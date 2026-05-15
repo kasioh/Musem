@@ -12,7 +12,74 @@
 </head>
 
 <body>
+<!-- LIGHTBOX -->
 
+<div class="photo-lightbox" id="lightbox">
+  <span class="photo-lightbox__close">&times;</span>
+
+  <img src="" alt="" id="lightbox-img">
+</div>
+
+<script>
+
+const burger = document.getElementById('burger');
+const mobileNav = document.getElementById('mobileNav');
+
+burger.addEventListener('click', () => {
+  burger.classList.toggle('burger--open');
+  mobileNav.classList.toggle('mobile-nav--open');
+});
+
+
+/* LIGHTBOX */
+
+const images = document.querySelectorAll(
+  '.photo-grid img, .photo-big img'
+);
+
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeBtn = document.querySelector('.photo-lightbox__close');
+
+images.forEach(img => {
+
+  img.addEventListener('click', () => {
+
+    lightbox.classList.add('active');
+
+    lightboxImg.src = img.src;
+
+  });
+
+});
+
+closeBtn.addEventListener('click', () => {
+
+  lightbox.classList.remove('active');
+
+});
+
+lightbox.addEventListener('click', (e) => {
+
+  if (e.target === lightbox) {
+
+    lightbox.classList.remove('active');
+
+  }
+
+});
+
+document.addEventListener('keydown', (e) => {
+
+  if (e.key === 'Escape') {
+
+    lightbox.classList.remove('active');
+
+  }
+
+});
+
+</script>
 <!-- HEADER -->
 <header class="header">
 
