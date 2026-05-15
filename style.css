@@ -1105,6 +1105,38 @@ hr {
     font-size: 0.62rem;
   }
 }
+.social-title {
+  margin-top: 12px;
+  font-weight: 600;
+  color: #ffb347; /* можно под твой "золотой/оранжевый" стиль */
+}
+
+.vk-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  text-decoration: none;
+  color: #4c75a3;
+  font-weight: 500;
+}
+
+.vk-link:hover {
+  opacity: 0.8;
+}
+
+.vk-icon {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: #4c75a3;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+}
 /* ======================================================
    PHOTO PAGE
 ====================================================== */
