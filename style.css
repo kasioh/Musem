@@ -1343,7 +1343,73 @@ hr {
   }
 
   .photo-big img {
-    height: 240px;
+    height: 360px;
   }
+
+  /* LIGHTBOX */
+
+.photo-lightbox {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.92);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: 0.35s ease;
+
+  z-index: 9999;
+
+  padding: 30px;
+}
+
+.photo-lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.photo-lightbox img {
+  max-width: 95%;
+  max-height: 90vh;
+
+  object-fit: contain;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 0 40px rgba(0,0,0,0.8);
+}
+
+.photo-lightbox__close {
+  position: absolute;
+
+  top: 25px;
+  right: 35px;
+
+  font-size: 48px;
+  line-height: 1;
+
+  color: #fff;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.photo-lightbox__close:hover {
+  transform: scale(1.1);
+
+  color: #FFD27A;
+}
+
+.photo-grid img,
+.photo-big img {
+  cursor: pointer;
+}
 
 }
