@@ -12,74 +12,7 @@
 </head>
 
 <body>
-<!-- LIGHTBOX -->
 
-<div class="photo-lightbox" id="lightbox">
-  <span class="photo-lightbox__close">&times;</span>
-
-  <img src="" alt="" id="lightbox-img">
-</div>
-
-<script>
-
-const burger = document.getElementById('burger');
-const mobileNav = document.getElementById('mobileNav');
-
-burger.addEventListener('click', () => {
-  burger.classList.toggle('burger--open');
-  mobileNav.classList.toggle('mobile-nav--open');
-});
-
-
-/* LIGHTBOX */
-
-const images = document.querySelectorAll(
-  '.photo-grid img, .photo-big img'
-);
-
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const closeBtn = document.querySelector('.photo-lightbox__close');
-
-images.forEach(img => {
-
-  img.addEventListener('click', () => {
-
-    lightbox.classList.add('active');
-
-    lightboxImg.src = img.src;
-
-  });
-
-});
-
-closeBtn.addEventListener('click', () => {
-
-  lightbox.classList.remove('active');
-
-});
-
-lightbox.addEventListener('click', (e) => {
-
-  if (e.target === lightbox) {
-
-    lightbox.classList.remove('active');
-
-  }
-
-});
-
-document.addEventListener('keydown', (e) => {
-
-  if (e.key === 'Escape') {
-
-    lightbox.classList.remove('active');
-
-  }
-
-});
-
-</script>
 <!-- HEADER -->
 <header class="header">
 
@@ -95,14 +28,14 @@ document.addEventListener('keydown', (e) => {
     </a>
 
     <nav class="nav">
-        <ul class="nav__list">
+      <ul class="nav__list">
         <li><a href="index.html" class="nav__link">ГЛАВНАЯ</a></li>
-          <li><a href="index.html#about" class="nav__link">О НАС</a></li>
-          <li><a href="index.html#exhibitions" class="nav__link">ВЫСТАВКИ</a></li>
-          <li><a href="#" class="nav__link">Фото</a></li>
-          <li><a href="index.html#tickets" class="nav__link">ЦЕНЫ</a></li>
-          <li><a href="index.html#booking" class="nav__link">КОНТАКТЫ</a></li>
-        </ul>
+        <li><a href="index.html#about" class="nav__link">О НАС</a></li>
+        <li><a href="index.html#exhibitions" class="nav__link">ВЫСТАВКИ</a></li>
+        <li><a href="#" class="nav__link">Фото</a></li>
+        <li><a href="index.html#tickets" class="nav__link">ЦЕНЫ</a></li>
+        <li><a href="index.html#booking" class="nav__link">КОНТАКТЫ</a></li>
+      </ul>
     </nav>
 
     <button class="burger" id="burger">
@@ -116,13 +49,13 @@ document.addEventListener('keydown', (e) => {
   <!-- MOBILE NAV -->
   <nav class="mobile-nav" id="mobileNav">
     <ul class="nav__list">
-        <li><a href="index.html" class="nav__link">ГЛАВНАЯ</a></li>
-          <li><a href="index.html#about" class="nav__link">О НАС</a></li>
-          <li><a href="index.html#exhibitions" class="nav__link">ВЫСТАВКИ</a></li>
-          <li><a href="#" class="nav__link">Фото</a></li>
-          <li><a href="index.html#tickets" class="nav__link">ЦЕНЫ</a></li>
-          <li><a href="index.html#booking" class="nav__link">КОНТАКТЫ</a></li>
-        </ul>
+      <li><a href="index.html" class="nav__link">ГЛАВНАЯ</a></li>
+      <li><a href="index.html#about" class="nav__link">О НАС</a></li>
+      <li><a href="index.html#exhibitions" class="nav__link">ВЫСТАВКИ</a></li>
+      <li><a href="#" class="nav__link">Фото</a></li>
+      <li><a href="index.html#tickets" class="nav__link">ЦЕНЫ</a></li>
+      <li><a href="index.html#booking" class="nav__link">КОНТАКТЫ</a></li>
+    </ul>
   </nav>
 
 </header>
@@ -150,13 +83,11 @@ document.addEventListener('keydown', (e) => {
 
     <!-- BIG PHOTO -->
     <section class="photo-big">
-
       <img src="image/gallery0.jpg" alt="">
-
     </section>
 
 
-    <!-- 6 PHOTOS -->
+    <!-- GRID -->
     <section class="photo-grid">
 
       <img src="image/gallery1.jpg" alt="">
@@ -192,11 +123,9 @@ document.addEventListener('keydown', (e) => {
     </section>
 
 
-    <!-- LAST BIG PHOTO -->
+    <!-- LAST PHOTO -->
     <section class="photo-big photo-big--last">
-
       <img src="image/gallery13.jpg" alt="">
-
     </section>
 
 
@@ -243,6 +172,17 @@ document.addEventListener('keydown', (e) => {
 </footer>
 
 
+<!-- LIGHTBOX -->
+
+<div class="photo-lightbox" id="lightbox">
+
+  <span class="photo-lightbox__close">&times;</span>
+
+  <img src="" alt="" id="lightbox-img">
+
+</div>
+
+
 <script>
 
 const burger = document.getElementById('burger');
@@ -251,6 +191,53 @@ const mobileNav = document.getElementById('mobileNav');
 burger.addEventListener('click', () => {
   burger.classList.toggle('burger--open');
   mobileNav.classList.toggle('mobile-nav--open');
+});
+
+
+/* LIGHTBOX */
+
+const images = document.querySelectorAll('.photo-grid img, .photo-big img');
+
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeBtn = document.querySelector('.photo-lightbox__close');
+
+images.forEach((img) => {
+
+  img.addEventListener('click', () => {
+
+    lightbox.classList.add('active');
+
+    lightboxImg.src = img.src;
+
+  });
+
+});
+
+closeBtn.addEventListener('click', () => {
+
+  lightbox.classList.remove('active');
+
+});
+
+lightbox.addEventListener('click', (e) => {
+
+  if (e.target === lightbox) {
+
+    lightbox.classList.remove('active');
+
+  }
+
+});
+
+document.addEventListener('keydown', (e) => {
+
+  if (e.key === 'Escape') {
+
+    lightbox.classList.remove('active');
+
+  }
+
 });
 
 </script>
