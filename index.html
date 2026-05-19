@@ -319,30 +319,20 @@
     });
   </script>
   <script>
-document.getElementById('bookingForm').addEventListener('submit', function (e) {
+const form = document.getElementById('bookingForm');
+
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
+    const data = Object.fromEntries(new FormData(form));
 
-    const data = {
-        name: formData.get('name'),
-        phone: formData.get('phone'),
-        date: formData.get('date'),
-        exhibition: formData.get('exhibition'),
-        tickets_count: formData.get('tickets_count') || '1'
-    };
-
-    fetch("https://script.google.com/macros/s/AKfycbz3SpgQ5zPZxoBX-G2DtUdK5JQ470ZrmwDSKRgB3nGhwu3vRYQBS9FCbh5nD603b-tE8A/exec", {
+    await fetch("https://script.google.com/macros/s/AKfycbz3SpgQ5zPZxoBX-G2DtUdK5JQ470ZrmwDSKRgB3nGhwu3vRYQBS9FCbh5nD603b-tE8A/exec", {
         method: "POST",
         body: JSON.stringify(data)
-    })
-    .then(() => {
-        alert("✅ Заявка отправлена! Мы свяжемся с вами");
-        e.target.reset();
-    })
-    .catch(() => {
-        alert("❌ Ошибка отправки");
     });
+
+    alert("✅ Заявка отправлена!");
+    form.reset();
 });
  </script>
   
