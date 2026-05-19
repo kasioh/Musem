@@ -311,20 +311,11 @@
       draw();
     })();
 
-    // ── Form submit ──────────────────────────────────────────────
-    document.getElementById('bookingForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const btn = this.querySelector('[type="submit"]');
-      btn.textContent = '✓ Заявка отправлена!';
-      btn.style.background = 'linear-gradient(135deg, #5a9a3a, #3d7a25)';
-      setTimeout(() => { btn.textContent = 'Забронировать'; btn.removeAttribute('style'); }, 3000);
-    });
-  </script>
-
-  <script>
-document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+  // ── Form submit ──────────────────────────────────────────────
+document.getElementById('bookingForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   
+  // Собираем данные
   const formData = new FormData(e.target);
   const data = {
     name: formData.get('name'),
@@ -334,30 +325,28 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
     tickets_count: formData.get('tickets_count') || '1'
   };
   
+  // Отправляем на Google Script
   const URL = 'https://script.google.com/macros/s/AKfycbyY_ELDCewHYZVe70ijEIlP_XxvLNSST8qZjs0gttKlJ_6kmgqAA9QcJGogT4keUO_a/exec';
   
   try {
-    const response = await fetch(URL, {
+    await fetch(URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
     
-    const result = await response.json();
+    // Показываем успех
+    const btn = this.querySelector('[type="submit"]');
+    btn.textContent = '✓ Заявка отправлена!';
+    btn.style.background = 'linear-gradient(135deg, #5a9a3a, #3d7a25)';
+    setTimeout(() => { btn.textContent = 'Забронировать'; btn.removeAttribute('style'); }, 3000);
     
-    if (result.status === 'ok') {
-      alert('✅ Заявка отправлена! Мы свяжемся с вами');
-      e.target.reset();
-    } else {
-      alert('❌ Ошибка, попробуйте позже');
-    }
+    alert('✅ Заявка отправлена! Мы свяжемся с вами');
+    e.target.reset();
+    
   } catch (error) {
-    console.error('Ошибка:', error);
     alert('❌ Ошибка, попробуйте позже');
   }
 });
-</script>
 </body>
 </html>
