@@ -333,8 +333,8 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
     tickets_count: formData.get('tickets_count') || '1'
   };
   
-  // СЮДА ВСТАВЬТЕ ВАШ URL ИЗ GOOGLE SCRIPT:
-  const URL = 'https://script.google.com/macros/s/AKfycbyG9P7raBlrVKUG1HLHxikpYoUKRjY5ozB3EF4VPJ1gSzV9X_SfsKbx7o3n0W1-I1j1SQ/exec';
+  
+  const URL = 'https://script.google.com/macros/s/AKfycbzSLwZl4VOkuq4EClr-mTiYfm8Q31nteC8I_RFS-OAIwHrBqS-sHh-RRFyFWWDGmfJugA/exec';
   
   try {
     await fetch(URL, {
