@@ -332,9 +332,8 @@ document.getElementById('bookingForm').addEventListener('submit', (e) => {
     formData.set('tickets_count', '1');
   }
   
-  const URL = 'https://script.google.com/macros/s/AKfycbxNdLfJI_FqauvcqheYJCHIjpLYSc0SM5i8xbse1MlmwXTaicz0MJe4jeKUbjVYAXeE/exec';
+  const URL = 'https://script.google.com/macros/s/AKfycbxDeyOyDe_9CRg6Jye3P6wroTyAfdcB1YicPSa5yvcxlTuU90pBUpBPEsHoZT6oqvAnkg/exec';
   
-  // Отправляем как обычную форму, а не JSON
   fetch(URL, {
     method: 'POST',
     mode: 'no-cors',
