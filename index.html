@@ -311,37 +311,34 @@
       draw();
     })();
 
-// ── Form submit ──────────────────────────────────────────────
-document.getElementById('bookingForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+
   
-  // Собираем данные
-  const formData = new FormData(e.target);
-  const data = {
-    name: formData.get('name'),
-    phone: formData.get('phone'),
-    date: formData.get('date'),
-    exhibition: formData.get('exhibition'),
-    tickets_count: formData.get('tickets_count') || '1'
-  };
-  
-  // Формируем URL с параметрами (GET-запрос)
-  const URL = 'https://script.google.com/macros/s/AKfycbxCURr_XyRW6pJ81TK1PguoAgZBl98OqTFWz2IIkUBarb8Y-qo8jJc1KIcTNgPy60Ueng/exec';
-  const params = new URLSearchParams(data);
-  const fullUrl = URL + '?' + params.toString();
-  
-  // Отправляем GET-запрос
-  fetch(fullUrl, { method: 'GET', mode: 'no-cors' })
+ document.getElementById('bookingForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+
+    const data = {
+        name: formData.get('name'),
+        phone: formData.get('phone'),
+        date: formData.get('date'),
+        exhibition: formData.get('exhibition'),
+        tickets_count: formData.get('tickets_count') || '1'
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbz3SpgQ5zPZxoBX-G2DtUdK5JQ470ZrmwDSKRgB3nGhwu3vRYQBS9FCbh5nD603b-tE8A/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
     .then(() => {
-      const btn = document.querySelector('#bookingForm button[type="submit"]');
-      btn.textContent = '✓ Заявка отправлена!';
-      btn.style.background = 'linear-gradient(135deg, #5a9a3a, #3d7a25)';
-      setTimeout(() => { btn.textContent = 'Забронировать'; btn.removeAttribute('style'); }, 3000);
-      alert('✅ Заявка отправлена! Мы свяжемся с вами');
-      e.target.reset();
+        alert("✅ Заявка отправлена!");
+        e.target.reset();
     })
     .catch(() => {
-      alert('❌ Ошибка, попробуйте позже');
+        alert("❌ Ошибка отправки");
     });
 });
 </body>
