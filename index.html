@@ -324,13 +324,12 @@ document.getElementById('bookingForm').addEventListener('submit', async function
     exhibition: formData.get('exhibition'),
     tickets_count: formData.get('tickets_count') || '1'
   };
-  
-  // Отправляем на Google Script
-  const URL = 'https://script.google.com/macros/s/AKfycbyY_ELDCewHYZVe70ijEIlP_XxvLNSST8qZjs0gttKlJ_6kmgqAA9QcJGogT4keUO_a/exec';
+  const URL = 'https://script.google.com/macros/s/AKfycbxCURr_XyRW6pJ81TK1PguoAgZBl98OqTFWz2IIkUBarb8Y-qo8jJc1KIcTNgPy60Ueng/exec';
   
   try {
     await fetch(URL, {
       method: 'POST',
+      mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
@@ -345,9 +344,10 @@ document.getElementById('bookingForm').addEventListener('submit', async function
     e.target.reset();
     
   } catch (error) {
+    console.error('Ошибка:', error);
     alert('❌ Ошибка, попробуйте позже');
   }
 });
-    </script>
+ 
 </body>
 </html>
