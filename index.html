@@ -320,5 +320,33 @@
       setTimeout(() => { btn.textContent = 'Забронировать'; btn.removeAttribute('style'); }, 3000);
     });
   </script>
+  <script>
+document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const formData = new FormData(e.target);
+  const data = {
+    name: formData.get('name'),
+    phone: formData.get('phone'),
+    date: formData.get('date'),
+    exhibition: formData.get('exhibition'),
+    tickets_count: formData.get('tickets_count') || '1'
+  };
+  
+  // СЮДА ВСТАВЬТЕ ВАШ URL ИЗ GOOGLE SCRIPT:
+  const URL = 'https://script.google.com/macros/s/AKfycbyG9P7raBlrVKUG1HLHxikpYoUKRjY5ozB3EF4VPJ1gSzV9X_SfsKbx7o3n0W1-I1j1SQ/exec';
+  
+  try {
+    await fetch(URL, {
+      method: 'POST',
+      body: JSON.stringify(data)
+    });
+    alert('✅ Заявка отправлена! Мы свяжемся с вами');
+    e.target.reset();
+  } catch (error) {
+    alert('❌ Ошибка, попробуйте позже');
+  }
+});
+</script>
 </body>
 </html>
