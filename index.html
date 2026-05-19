@@ -335,20 +335,47 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
   };
   
  
-  const URL = 'const URL = 'https://script.google.com/macros/s/AKfycbyj2CkPncdBafXuCraobiSBW4hnHOsQ9RqVmZtd9WikhnVyao8z_luvc5RJvpCSc4Wedg/exec'
+ <script>
+document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  // Собираем данные из формы
+  const formData = new FormData(e.target);
+  const data = {
+    name: formData.get('name'),
+    phone: formData.get('phone'),
+    date: formData.get('date'),
+    exhibition: formData.get('exhibition'),
+    tickets_count: formData.get('tickets_count') || '1'
+  };
+  
+  // ВАШ НОВЫЙ URL (вставлен правильно)
+  const URL = 'https://script.google.com/macros/s/AKfycbyY_ELDCewHYZVe70ijEIlP_XxvLNSST8qZjs0gttKlJ_6kmgqAA9QcJGogT4keUO_a/exec';
+  
   try {
-    await fetch(URL, {
+    const response = await fetch(URL, {
       method: 'POST',
-      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(data)
     });
-    alert('✅ Заявка отправлена! Мы свяжемся с вами');
-    e.target.reset();
+    
+    const result = await response.json();
+    
+    if (result.status === 'ok') {
+      alert('✅ Заявка отправлена! Мы свяжемся с вами');
+      e.target.reset(); // Очищаем форму
+    } else {
+      alert('❌ Ошибка, попробуйте позже');
+    }
   } catch (error) {
+    console.error('Ошибка при отправке:', error);
     alert('❌ Ошибка, попробуйте позже');
   }
 });
 </script>
+
   
 </body>
 </html>
