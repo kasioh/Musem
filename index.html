@@ -220,8 +220,6 @@
   </div>
 </section>
 
-     
-
   <!-- ========== FOOTER ========== -->
   <footer class="footer">
     <div class="container footer__inner">
@@ -272,7 +270,7 @@
     revealEls.forEach(el => observer.observe(el));
 
     // ── Particle canvas ──────────────────────────────────────────
-    (function() {
+    (function () {
       const canvas = document.getElementById('particlesCanvas');
       const ctx = canvas.getContext('2d');
       let w, h, particles = [];
@@ -311,36 +309,17 @@
       draw();
     })();
 
+    // ── Form submit ──────────────────────────────────────────────
+    document.getElementById('bookingForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const btn = this.querySelector('[type="submit"]');
+      btn.textContent = '✓ Заявка отправлена!';
+      btn.style.background = 'linear-gradient(135deg, #5a9a3a, #3d7a25)';
+      setTimeout(() => { btn.textContent = 'Забронировать'; btn.removeAttribute('style'); }, 3000);
+    });
+  </script>
+
 
   
- document.getElementById('bookingForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const formData = new FormData(e.target);
-
-    const data = {
-        name: formData.get('name'),
-        phone: formData.get('phone'),
-        date: formData.get('date'),
-        exhibition: formData.get('exhibition'),
-        tickets_count: formData.get('tickets_count') || '1'
-    };
-
-    fetch("https://script.google.com/macros/s/AKfycbz3SpgQ5zPZxoBX-G2DtUdK5JQ470ZrmwDSKRgB3nGhwu3vRYQBS9FCbh5nD603b-tE8A/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-    .then(() => {
-        alert("✅ Заявка отправлена!");
-        e.target.reset();
-    })
-    .catch(() => {
-        alert("❌ Ошибка отправки");
-    });
-});
-  </script>
 </body>
 </html>
