@@ -320,32 +320,33 @@
       setTimeout(() => { btn.textContent = 'Забронировать'; btn.removeAttribute('style'); }, 3000);
     });
   </script>
-  <script>
-document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+<script>
+document.getElementById('bookingForm').addEventListener('submit', (e) => {
   e.preventDefault();
   
-  const formData = new FormData(e.target);
-  const data = {
-    name: formData.get('name'),
-    phone: formData.get('phone'),
-    date: formData.get('date'),
-    exhibition: formData.get('exhibition'),
-    tickets_count: formData.get('tickets_count') || '1'
-  };
+  const form = e.target;
+  const formData = new FormData(form);
   
-  
-  const URL = 'https://script.google.com/macros/s/AKfycbyGLkNCmT0BQ47YeDsE7gziwd181gVTzDW8Kbs56Z-V7KaZfWI0z85SEFz-z5Oa0HER/exec';
-  
-  try {
-    await fetch(URL, {
-      method: 'POST',
-      body: JSON.stringify(data)
-    });
-    alert('✅ Заявка отправлена! Мы свяжемся с вами');
-    e.target.reset();
-  } catch (error) {
-    alert('❌ Ошибка, попробуйте позже');
+  // Добавляем недостающие поля
+  if (!formData.get('tickets_count')) {
+    formData.set('tickets_count', '1');
   }
+  
+  const URL = 'https://script.google.com/macros/s/AKfycbxNdLfJI_FqauvcqheYJCHIjpLYSc0SM5i8xbse1MlmwXTaicz0MJe4jeKUbjVYAXeE/exec';
+  
+  // Отправляем как обычную форму, а не JSON
+  fetch(URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: formData
+  })
+  .then(() => {
+    alert('✅ Заявка отправлена!');
+    form.reset();
+  })
+  .catch(() => {
+    alert('❌ Ошибка отправки');
+  });
 });
 </script>
 </body>
