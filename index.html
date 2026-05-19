@@ -173,31 +173,33 @@
 </a>
 </a>
       </address>
-    </div>
+   <form class="booking__form" id="bookingForm" name="booking" method="POST" data-netlify="true" novalidate>
+  <input type="hidden" name="form-name" value="booking" />
 
-    <form class="booking__form" id="bookingForm" novalidate>
-      <div class="form-group">
-        <label for="name" class="form-label">Ваше имя</label>
-        <input type="text" id="name" name="name" class="form-input" placeholder="Иван Иванов" required />
-      </div>
+  <div class="form-group">
+    <label for="name" class="form-label">Ваше имя</label>
+    <input type="text" id="name" name="name" class="form-input" placeholder="Иван Иванов" required />
+  </div>
 
-      <div class="form-group">
-        <label for="phone" class="form-label">Телефон</label>
-        <input type="tel" id="phone" name="phone" class="form-input" placeholder="+7 (___) ___-__-__" required />
-      </div>
+  <div class="form-group">
+    <label for="phone" class="form-label">Телефон</label>
+    <input type="tel" id="phone" name="phone" class="form-input" placeholder="+7 (___) ___-__-__" required />
+  </div>
 
-      <div class="form-group">
-        <label for="date" class="form-label">Дата посещения</label>
-        <input type="date" id="date" name="date" class="form-input" required />
-      </div>
+  <div class="form-group">
+    <label for="date" class="form-label">Дата посещения</label>
+    <input type="date" id="date" name="date" class="form-input" required />
+  </div>
 
-      <div class="form-group">
-        <label for="exhibition" class="form-label">Выставка</label>
-        <select id="exhibition" name="exhibition" class="form-input form-select">
-          <option value="">Выберите выставку</option>
-          <option value="star">Сказки и фэнтези звёздных миров</option>
-          <option value="fairy">Мир сказок</option>
-        </select>
+  <div class="form-group">
+    <label for="exhibition" class="form-label">Выставка</label>
+    <select id="exhibition" name="exhibition" class="form-input form-select">
+      <option value="">Выберите выставку</option>
+      <option value="star">Сказки и фэнтези звёздных миров</option>
+      <option value="fairy">Мир сказок</option>
+    </select>
+  </div>
+</form>
       </div>
 
       <div class="form-group">
