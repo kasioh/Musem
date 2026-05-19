@@ -334,12 +334,11 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
     tickets_count: formData.get('tickets_count') || '1'
   };
   
- 
-<script>
+ <script>
 document.getElementById('bookingForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   
-  // Собираем данные из формы
+ 
   const formData = new FormData(e.target);
   const data = {
     name: formData.get('name'),
@@ -349,7 +348,6 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
     tickets_count: formData.get('tickets_count') || '1'
   };
   
-  // ВАШ НОВЫЙ URL (вставлен правильно)
   const URL = 'https://script.google.com/macros/s/AKfycbyY_ELDCewHYZVe70ijEIlP_XxvLNSST8qZjs0gttKlJ_6kmgqAA9QcJGogT4keUO_a/exec';
   
   try {
