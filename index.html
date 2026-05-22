@@ -327,7 +327,7 @@ form.addEventListener('submit', async (e) => {
 
     const data = Object.fromEntries(new FormData(form));
 
-    await fetch("https://script.google.com/macros/s/AKfycbz_PpgM4sLS0wAOyuBrEr2F1CiH7_YuNi29ejUXEvdxEaCp9HwO-CGNaX9JIhPgYOE46A/exec", {
+    await fetch("https://script.google.com/macros/s/AKfycbzQQpG6B-y9kZ3r4oxU0fT7e4dBow87evptqJCM5Sqbu-d4--HSOlmbjlfaeFBbTy-0/exec", {
         method: "POST",
         body: JSON.stringify(data)
     });
