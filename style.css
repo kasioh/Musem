@@ -484,7 +484,7 @@ p { font-size: 18px; }
 .exhibition-card__img-wrap {
   position: relative;
   overflow: hidden;
-  height: 220px;
+  height: 350px;
 }
 
 .exhibition-card__img {
@@ -506,7 +506,7 @@ p { font-size: 18px; }
 .exhibition-card__body { padding: 24px; }
 
 .exhibition-card__title {
-  font-size: 1.05rem;
+  font-size: 22px;
   color: #FFE8C2;
   margin-bottom: 12px;
   letter-spacing: 0.03em;
@@ -652,7 +652,7 @@ hr {
   color: var(--clr-text);
 }
 
-.booking__contacts p { font-size: 26px; }
+.booking__contacts p { font-size: 32px; }
 
 .booking__contacts a {
   color: var(--clr-gold);
@@ -1256,7 +1256,7 @@ hr {
 
   .ticket-card__price { font-size: 2.1rem; }
   .ticket-card__note { font-size: 0.78rem; }
-  .booking__title { font-size: 1.35rem; }
+  .booking__title { font-size: 25px; }
   .booking__contacts, .checkbox-label, .checkbox-text, .form-input, .form-label { font-size: 0.92rem; }
   .footer { padding-block: 26px; }
   .footer__nav { gap: 10px; }
